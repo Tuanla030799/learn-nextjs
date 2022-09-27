@@ -1,0 +1,24 @@
+1. router
+	- <Link> prefetch: true
+	- chỉ prefetch có trong viewport (khung màn hình)
+	- net-work chậm : dissabed prefetch
+
+2. SSG, SSR, and ISR
+	- pre-rendering: render sẵn HTML ở sever -> loadjs -> hydration (nextjs: SSG, SSR)
+	- SSG: Static site generation (recommend)
+		+ HTML is generated at build-time và đc sử dụng lại mỗi request
+		+ build file HTML có sẵn
+		+ when should use SG: marketing page, blog pots, E-comerce, Help ...
+		+ getStaticProps: 
+			+ Shold export from a pages
+			+ Can't use getServerSideProps();
+			+ only run build time (server side)
+			+ run on every request in dev mode
+	- SSR: Server side rendering
+		+ HTML is generated on mỗi request
+	- CRS - Client side rendering
+		+ static generation without data + featch dât on the client side
+	- ISR - Incremental Static Regeneration
+ 3. Automatic Static Optimization
+ 	- X ác định xem  có sử dụng SSR ko có (return html) ko (return file js) ?
+ 	- ASO (router.query: empty when pre-rendering, update after hydration)

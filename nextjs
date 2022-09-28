@@ -10,15 +10,24 @@
 		+ build file HTML có sẵn
 		+ when should use SG: marketing page, blog pots, E-comerce, Help ...
 		+ getStaticProps: 
-			+ Shold export from a pages
+			+ Should export from a pages
 			+ Can't use getServerSideProps();
 			+ only run build time (server side)
 			+ run on every request in dev mode
+		+ getStaticPaths:
+			+ tương tự như props
+			+ return object gồm path (là một mảng obj truyền vào getStaticPro ps, có bn record truyền vào bấ  y nhiêu lần để render HTML ) vs fallback (false, true , blooking)
 	- SSR: Server side rendering
+		+ getServerSideProps:
+			+ run on server-side only
+			+ run per page request
+			_ TTFB (time to first byte) will be slower than getStaticProps
 		+ HTML is generated on mỗi request
 	- CRS - Client side rendering
 		+ static generation without data + featch dât on the client side
 	- ISR - Incremental Static Regeneration
- 3. Automatic Static Optimization
- 	- X ác định xem  có sử dụng SSR ko có (return html) ko (return file js) ?
- 	- ASO (router.query: empty when pre-rendering, update after hydration)
+3. Automatic Static Optimization
+- X ác định xem  có sử dụng SSR ko có (return html) ko (return file js) ?
+- ASO (router.query: empty when pre-rendering, update after hydration)
+4. dynamic(() => import(""), {ssr: false}): chỉ render phía client
+

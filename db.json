@@ -3,12 +3,12 @@
     {
       "id": 1,
       "title": "json-server",
-      "author": "typicode"
+      "description": "losers is a service provider"
     },
     {
       "id": 2,
       "title": "json-server2",
-      "author": "typicode1"
+      "description": "lose isolatedModules and services"
     }
   ]
 }

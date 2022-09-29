@@ -1,6 +1,7 @@
 import { GetStaticProps, GetStaticPropsContext } from 'next';
 import Link from 'next/link';
 import React from 'react';
+import { MainLayout } from '../../components/layout';
 
 export interface PostListPageProps {
   posts: any[];
@@ -8,7 +9,7 @@ export interface PostListPageProps {
 
 const PostListPage = (props: PostListPageProps) => {
   return (
-    <>
+    <MainLayout>
       <div>Post list page</div>
       <ul>
         {props.posts.map((post) => {
@@ -19,7 +20,7 @@ const PostListPage = (props: PostListPageProps) => {
           );
         })}
       </ul>
-    </>
+    </MainLayout>
   );
 };
 

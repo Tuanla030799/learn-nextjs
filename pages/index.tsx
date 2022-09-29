@@ -1,9 +1,10 @@
-import type { NextPage } from 'next'
+import { MainLayout } from '../components/layout';
+import { NextPageWithLayout } from '../models';
 
-const HomePage: NextPage = () => {
-  return (
-    <h1>this is a Home Page</h1>
-  )
-}
+const HomePage: NextPageWithLayout = () => {
+  return <h1>this is a Home Page</h1>;
+};
 
-export default HomePage
+HomePage.Layout = MainLayout;
+
+export default HomePage;

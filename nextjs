@@ -26,8 +26,23 @@
 	- CRS - Client side rendering
 		+ static generation without data + featch dât on the client side
 	- ISR - Incremental Static Regeneration
+		+ tương tự như SSG + generated HTML on demand
+		+ build sắn 1 phần sản phẩm phổ biến (faster build, higher cache hit rate)
+		+ nguyên lí hđ: getStaticProps => revalidate: 60 => ISA
+			+ tại thời điểm build 0s -> 60s user request -> trả về từ cache. 60s trở lên thì trả về html cũ -> trigger html mới -> update cache.
+		+ getStaticPaths => fallback:
+			+ (blocking): gọi getStaticProps return client => trả về từ cache 
+			+ (true) => request sản phẩm ko tồn tại return router isFallback làm (loadding) , loadding xong update
+
 3. Automatic Static Optimization
 - X ác định xem  có sử dụng SSR ko có (return html) ko (return file js) ?
 - ASO (router.query: empty when pre-rendering, update after hydration)
 4. dynamic(() => import(""), {ssr: false}): chỉ render phía client
+
+5. Authentication and Authorization
+	+ Authentication: who arre you : xác minh bạn là ai ?
+		+ Auth: cookies or localstorage ?
+			+ localstorage: XSS attack : 
+			+ cookies: CSRF attack (ko liên quan đến money)
+	+ Authorization: are you allowed to do that : bạn đc làm gì trong hệ thống ? 
 

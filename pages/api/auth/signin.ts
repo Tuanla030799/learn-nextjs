@@ -12,6 +12,7 @@ export const config = {
 const proxy = httpProxy.createProxyServer();
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<any>) {
+
   if (req.method !== 'POST') {
     return res.status(404).json({ message: 'method is not supported' });
   }
@@ -27,7 +28,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<any>) 
 
       proxyRes.on('end', function () {
         try {
-          const { accessToken, expriredAt } = JSON.parse(body);
+          const { accessToken } = JSON.parse(body);
+
+          console.log(JSON.parse(body));
 
           // convert token to cookies
 
@@ -36,7 +39,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<any>) 
           cookies.set('access_token', accessToken, {
             httpOnly: true,
             sameSite: 'lax',
-            expires: new Date(expriredAt)
+            // expires: new Date(expriredAt)
           });
 
           (res as NextApiResponse).status(200).json({
@@ -55,7 +58,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<any>) 
     proxy.once('proxyRes', handleLoginResponse);
 
     proxy.web(req, res, {
-      target: 'https://nestjs-tutorial-2022.herokuapp.com',
+      target: 'http://localhost:5000',
       changeOrigin: true,
       selfHandleResponse: true,
     });

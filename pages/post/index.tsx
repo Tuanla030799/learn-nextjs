@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<PostListPageProps> = async (
   // server-side
   // build time
 
-  const response = await fetch('http://localhost:3000/posts');
+  const response = await fetch('http://localhost:5000/tasks');
   const data = await response.json();
 
   // console.log('static props', data);

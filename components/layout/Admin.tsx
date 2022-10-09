@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import * as React from 'react';
 import { ILayoutProps } from '../../models';
+import Auth from '../common/Auth';
 
 export interface IAdminLayoutProps {}
 
 export function AdminLayout({ children }: ILayoutProps) {
   return (
-    <div>
+    <Auth>
       <h1>Admin Layout</h1>
 
       <Link href="/">
@@ -18,6 +19,6 @@ export function AdminLayout({ children }: ILayoutProps) {
       </Link>
 
       <div>{children}</div>
-    </div>
+    </Auth>
   );
 }
